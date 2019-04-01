@@ -1,0 +1,113 @@
+<html>
+<link type="text/css" rel="styleSheet" href="index.css" />
+<title>E-book</title>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="booklist">
+        <header id="globalHeader">
+            <div class="inner">
+                <div class="left">
+                    <a href="index.html" class="logo"><strong>E-book</strong></a>
+                    <a href="booklist.html">所有书籍</a>
+                    <a>教材</a>
+                    <a>教辅</a>
+                    <a>其他书籍</a>
+                </div>
+                <div class="right">
+                    <input class="search" name="text" type="search" aria-label="查找书籍……" placeholder="查找书籍……"
+                        autocomplete="off" v-model="searchName">
+                    <a href="login.html">登录</a>
+                    <a href="register.html">注册</a>
+                    <a href="cart.html">购物车</a>
+                </div>
+            </div>
+        </header>
+        <div style="height: 3em"></div>
+        <p style="margin-bottom: 1em; margin-left: 2em">所有书籍 ></p>
+        <div class="sort">
+            <div>排序：</div>
+            <div @click="setSortType(1)">价格<img :src='price_sortimage' style="width: 12px; height: 12px; margin-left: 3px;"></div>
+            <div @click="setSortType(3)">库存<img :src='stock_sortimage' style="width: 12px; height: 12px; margin-left: 3px;"></div>
+        </div>
+        <div class="bookele" v-for='book in filter_book'>
+            <div class="inner">
+                <div class="book">
+                    <img :src='book.picpath'>
+                    <div class="description">
+                        <a :href="book.link" class="title">{{ book.title }}</a>
+                        <div><a class="price">￥{{ book.price.toFixed(2) }}</a><a class="stock">库存{{ book.stock }}本</a></div>
+                        <a class="author">{{ book.author }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var booklist = new Vue({
+        el: '#booklist',
+        data: {
+            sortType: 0,
+            searchName: '',
+            books: [
+                { title: '深入理解计算机系统', price: 150, author: '（美）兰德尔E.布莱恩特（Randal E.Bryant）等 /2016-11-14 /机械工业出版社', picpath: 'images/srljjsjxt.jpg', link: 'book_1.html', stock: 777 },
+                { title: '数据库系统概念', price: 70, author: '(美)西尔伯沙茨 /2012-05-01 /机械工业出版社', picpath: 'images/sjkxtgn.jpg', link: 'book_2.html', stock: 888 },
+                { title: '他改变了中国', price: 46.6, author: '[美]罗伯特·劳伦斯·库恩 著，谈峥 于海江 等译，陆谷孙 校 /2005-01-01 /上海译文出版社', picpath: 'images/tgblzg.jpg', link: 'book_3.html', stock: 800 },
+            ],
+        },
+        computed: {
+            price_sortimage: function () {
+                if (this.sortType === 1) {
+                    return 'images/up.png';
+                } else if (this.sortType === 2) {
+                    return 'images/down.png';
+                }
+                return ''
+            },
+            stock_sortimage: function () {
+                if (this.sortType === 3) {
+                    return 'images/up.png';
+                } else if (this.sortType === 4) {
+                    return 'images/down.png';
+                }
+                return ''
+            },
+            filter_book: function () {
+                const { books, searchName, sortType } = this;
+                let arr = [...books];
+
+                if (searchName.trim()) {
+                    console.log(arr);
+                    arr = arr.filter(p => (p.title.indexOf(searchName) !== -1) || (p.author.indexOf(searchName) !== -1));
+                }
+                if (sortType) {
+                    vals = [0, 'p1.price - p2.price', 'p2.price - p1.price', 'p1.stock - p2.stock', 'p2.stock - p1.stock'];
+                    arr.sort(function (p1, p2) {
+                        return eval(vals[sortType])
+                    })
+                }
+                return arr;
+            }
+        },
+        methods: {
+            setSortType(sortType) {
+                if (this.sortType == sortType) {
+                    this.sortType += 1
+                }
+                else if (this.sortType == (sortType + 1)) {
+                    this.sortType = 0
+                }
+                else {
+                    this.sortType = sortType
+                }
+            }
+        }
+    })
+</script>
+
+</html>
