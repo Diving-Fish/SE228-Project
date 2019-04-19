@@ -1,9 +1,0 @@
-com\diving_fish\ebook\config\SecurityConfig.class
-com\diving_fish\ebook\config\SecurityConfig$1.class
-com\diving_fish\ebook\config\CorsConfig.class
-com\diving_fish\ebook\Main.class
-com\diving_fish\ebook\repository\UserRepository.class
-com\diving_fish\ebook\controller\EBookController.class
-com\diving_fish\ebook\repository\BookRepository.class
-com\diving_fish\ebook\entity\BookEntity.class
-com\diving_fish\ebook\entity\UserEntity.class
