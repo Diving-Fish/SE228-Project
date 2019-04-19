@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "book")
 public class BookEntity {
     @Id
-    public Long ispn;
+    public Long isbn;
     @Column(length = 32)
     public String title;
     @Column(length = 8)
@@ -15,14 +15,14 @@ public class BookEntity {
     public String author;
     @Column
     public String intro;
-    @Column(length = 4)
+    @Column
     public Integer stock;
-    @Column(length = 4)
+    @Column
     public Integer category;
 
     public String to_json() {
         String ret = "{";
-        ret += "\"ispn\": " + ispn + ", ";
+        ret += "\"isbn\": " + isbn + ", ";
         ret += "\"title\": \"" + title + "\", ";
         ret += "\"price\": " + price + ", ";
         ret += "\"author\": \"" + author + "\", ";

@@ -1,5 +1,8 @@
 C:\Users\dfysh\Documents\GitHub\SE228-Project\back-end\src\main\java\com\diving_fish\ebook\Main.java
+C:\Users\dfysh\Documents\GitHub\SE228-Project\back-end\src\main\java\com\diving_fish\ebook\config\SecurityConfig.java
 C:\Users\dfysh\Documents\GitHub\SE228-Project\back-end\src\main\java\com\diving_fish\ebook\entity\BookEntity.java
+C:\Users\dfysh\Documents\GitHub\SE228-Project\back-end\src\main\java\com\diving_fish\ebook\entity\UserEntity.java
 C:\Users\dfysh\Documents\GitHub\SE228-Project\back-end\src\main\java\com\diving_fish\ebook\controller\EBookController.java
+C:\Users\dfysh\Documents\GitHub\SE228-Project\back-end\src\main\java\com\diving_fish\ebook\repository\UserRepository.java
 C:\Users\dfysh\Documents\GitHub\SE228-Project\back-end\src\main\java\com\diving_fish\ebook\config\CorsConfig.java
 C:\Users\dfysh\Documents\GitHub\SE228-Project\back-end\src\main\java\com\diving_fish\ebook\repository\BookRepository.java

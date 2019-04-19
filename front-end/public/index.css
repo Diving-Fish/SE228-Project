@@ -1,0 +1,324 @@
+#globalHeader {
+    color: #fff;
+    cursor: default;
+    height: 3.25em;
+    left: 0;
+    line-height: 3.25em;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+	background: #6284c9
+}
+
+#globalHeader .inner {
+    margin: 0 auto;
+    position: relative;
+	max-width: 65%;
+	height: auto;
+	padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+	box-sizing: border-box;
+    display: flex;
+}
+
+#globalHeader .logo {
+    color: #ffffff;
+    display: inline-block;
+    font-weight: 400;
+    height: inherit;
+    left: 0;
+    line-height: inherit;
+    margin-right: 20px;
+    padding: 0;
+    top: 0;
+    font-size: 1em;
+}
+
+.right {
+    position: absolute;
+    right: 0px;
+}
+
+
+#globalHeader a {
+	text-decoration: none;
+    padding: 0 0.75em;
+    color: inherit;
+    font-size: 1em;
+}
+
+.search {
+    width: 300px;
+    height: 30px;
+    font-size: 14px;
+    padding: 0 28px 0 10px;
+    border-radius: 0;
+    margin-left: 20px;
+}
+
+#booklist {
+    border-left:1px solid #cccccc;
+    border-right:1px solid #cccccc;
+    margin: 0 auto;
+    width: 65%;
+    height: fit-content;
+}
+
+
+.bookele .inner {
+    margin: 0 auto;
+    position: relative;
+	height: auto;
+	padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+	box-sizing: border-box;
+	display: block;
+}
+
+.bookele .inner div.book {
+    margin: 30px auto;
+    display: flex;
+}
+
+.bookele .inner div.book a.title {
+    text-decoration: none;
+    color: #1a66b3;
+    display: block;
+    margin: 10px auto;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.bookele .inner div.book div a.price {
+    margin: 10px auto;
+    font-weight: bold;
+    font-size: 21px;
+    color: #ff0000;
+}
+
+.bookele .inner div.book div a.stock {
+    padding-left: 10px;
+    margin: 10px auto;
+    font-size: 16px;
+    color: #555555;
+}
+
+.bookele .inner div.book a.author {
+    display: block;
+    margin: 15px auto;
+    font-size: 16px;
+}
+
+.bookele .title {
+	font-size: 30px;
+	font-family: 'Arial'
+}
+
+.bookele .text {
+	font-size: 18px;
+	font-family: 'Arial'
+}
+
+.sort {
+    margin-left: 2em;
+    display: flex;
+}
+
+.sort div {
+    cursor: pointer;
+    padding:    5px;
+}
+
+#booklist .selected_category {
+    cursor: pointer;
+    width: 120px;
+    height: 30px;
+}
+
+.bookinstance {
+    max-width: 65%;
+    margin: 0 auto;
+}
+
+.bookinstance .inner {
+    margin: 0 2em 0 2em;
+    position: relative;
+	height: auto;
+	padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+}
+
+
+.bookinstance .inner div.book {
+    display: flex;
+    margin: 0 2em 0 2em;
+}
+
+.bookinstance .inner div.book .description {
+    width: 400px;
+}
+
+.bookinstance .inner div.book div.image {
+    width: 305px;
+    height: 305px;
+    border: 1px #dddddd solid;
+    margin-right: 2em;
+}
+.bookinstance .inner div.book div.image img {
+    width: 300px;
+    height: 300px;
+}
+
+.bookinstance .inner div.book a.title {
+    text-decoration: none;
+    color: #000000;
+    display: block;
+    margin: 10px auto;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.bookinstance .inner div.book a.price {
+    display: block;
+    margin: 10px auto;
+    font-weight: bold;
+    font-size: 24px;
+    color: #ff0000;
+}
+
+.bookinstance .inner div.book a.author {
+    display: block;
+    margin: 15px auto;
+    font-size: 14px;
+    color: #1284b9;
+}
+
+.bookinstance .inner div.book .part1 {
+    padding-bottom: 1em;
+    border-bottom: 2px #1a66b3 solid
+}
+
+.bookinstance .inner div.book .part2 {
+    display: flex;
+    margin-top: 20px;
+}
+
+.bookinstance .inner div.book .buy {
+    background: #1a66b3;
+    padding: 5px 20px;
+    margin: 0px 20px 0px 0px;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.bookinstance .inner div.book .cart {
+    border: 1px #1a66b3 solid;
+    padding: 5px 20px;
+    margin: 0px 20px 0px 0px;
+    font-size: 20px;
+    color: #1a66b3;
+    cursor: pointer;
+}
+
+.login {
+    height: fit-content;
+    width: 70%;
+    margin: 0 15%;
+}
+
+.login div.inner {
+    width: 420px;
+    height: fit-content;
+    margin: 15% auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 2px solid #1a66b3;
+    background: #cae4ff;
+    border-radius: 6px;
+    padding: 10px;
+    display: block;
+}
+
+.login div.inner .text-title {
+    text-align: center;
+    padding-top: 18px;
+    font-size: 24px;
+    padding-bottom: 12px;
+}
+
+.login div.inner .input-box{
+    text-align: right;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+    padding: 12px 0px;
+}
+
+.login div.inner .input-box input{
+    width: 260px;
+    height: 32px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    padding-left: 12px;
+    margin-right: 55px;
+}
+
+.login div.inner .input-box .info {
+    font-size: 10px;
+    text-align: left;
+    margin-left: 110px;
+    color: red;
+}
+
+.login div.inner .lbutton-box button{
+    background-color: #1a66b3;
+    color: #ffffff;
+    font-size: 14px;
+    width: 180px;
+    height: 30px;
+    margin-left: 55px;
+    border: 1px solid #1a66b3;
+    border-radius: 4px;
+    margin-bottom: 30px;
+}
+
+.login div.inner .lbutton-box button:hover{
+    background-color: #307bc5;
+}
+
+.login div.inner .lbutton-box button:active{
+    background-color: #629eda;
+}
+
+.login div.inner .button-box button{
+    background-color: #1a66b3;
+    color: #ffffff;
+    font-size: 16px;
+    width: 350px;
+    height: 40px;
+    margin-left: 36px;
+    border: 1px solid #1a66b3;
+    border-radius: 4px;
+    margin-bottom: 30px;
+}
+
+.login div.inner .button-box button:hover{
+    background-color: #307bc5;
+}
+
+.login div.inner .button-box button:active{
+    background-color: #629eda;
+}
+
+.login #validtext {
+    margin-left: 18px;
+    font-size: 14px;
+}
