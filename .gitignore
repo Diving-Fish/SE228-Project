@@ -6,7 +6,7 @@ back-end/target/
 
 front-end/.DS_Store
 front-end/node_modules
-front-end//dist
+front-end/dist
 
 # local env files
 front-end/.env.local
