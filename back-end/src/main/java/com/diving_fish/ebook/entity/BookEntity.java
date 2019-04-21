@@ -19,6 +19,8 @@ public class BookEntity {
     public Integer stock;
     @Column
     public Integer category;
+    @Column
+    public Boolean valid;
 
     public String to_json() {
         String ret = "{";
@@ -29,7 +31,19 @@ public class BookEntity {
         ret += "\"intro\": \"" + intro + "\", ";
         ret += "\"stock\": " + stock + ", ";
         ret += "\"category\": " + category + ", ";
+        ret += "\"valid\": " + valid + ", ";
         ret += "}";
         return ret;
+    }
+
+    public void set(Long _isbn, String _title, Double _price, String _author, String _intro, Integer _stock, Integer _category, Boolean _valid) {
+        isbn = _isbn;
+        title = _title;
+        price = _price;
+        author = _author;
+        intro = _intro;
+        stock = _stock;
+        category = _category;
+        valid = _valid;
     }
 }

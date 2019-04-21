@@ -5,7 +5,7 @@
       <p style="margin-bottom: 2em">所有书籍 > {{ category_list[category] }} > {{ title }}</p>
       <div class="book">
         <div class="image">
-          <img :src=" './images/' + isbn + '.jpg' ">
+          <img :src="picpath">
         </div>
         <div class="description">
           <div class="part1">
@@ -39,6 +39,7 @@ export default {
       author: "",
       price: 0,
       category: 0,
+      picpath: "",
     };
   },
   created: function() {
@@ -52,6 +53,8 @@ export default {
         that.author = response.data.author;
         that.price = response.data.price;
         that.category = response.data.category;
+        that.picpath = "./images/" + that.isbn + ".jpg";
+        axios.get(that.picpath).catch(error => that.picpath = "./images/undefined.png")
       }).catch(function (error) {
         window.location.href="#/404";
       });

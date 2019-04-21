@@ -146,7 +146,7 @@ export default {
         })
         .then(function(response) {
           alert("注册成功！");
-          window.location.href = "./login";
+          window.location.href = "#/login";
         })
         .catch(function(error) {
           console.log(error);

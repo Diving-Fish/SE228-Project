@@ -6,6 +6,8 @@ import booklist from './components/Booklist.vue'
 import bookdetail from './components/BookDetail.vue'
 import notfound from './components/NotFound.vue'
 import register from './components/Register.vue'
+import manage from './components/Manage.vue'
+import managebook from './components/ManageBook.vue'
 
 Vue.use(Router)
 
@@ -37,9 +39,14 @@ export default new Router({
       component: bookdetail
     },
     {
-      path: '/404',
-      name: '404',
-      component: notfound
+      path: '/manage',
+      name: 'manage',
+      component: manage
+    },
+    {
+      path: '/manage/book/:isbn',
+      name: 'managebook',
+      component: managebook
     },
     {
       path: '*',

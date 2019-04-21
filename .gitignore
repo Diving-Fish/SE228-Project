@@ -1,8 +1,8 @@
 *.zip
 
-back-end/.idea/
-back-end/.vscode/
-back-end/target/
+back-end/.idea
+back-end/.vscode
+back-end/target
 
 front-end/.DS_Store
 front-end/node_modules

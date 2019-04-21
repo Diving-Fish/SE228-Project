@@ -29,7 +29,7 @@
     <div class="bookele" v-for="book in filter_book" :key="book.isbn">
       <div class="inner">
         <div class="book">
-          <img :src=" './images/' + book.isbn + '.jpg' ">
+          <img :src="book.picpath" style="width: 200px; height: 200px; margin-left: 20px; margin-right: 20px;">
           <div class="description">
             <router-link :to="'/book/' + book.isbn" :href="book.link" class="title">{{ book.title }}</router-link>
             <div>
@@ -77,6 +77,9 @@ export default {
       .get("http://localhost:8080/booklist/")
       .then(function(response) {
         that.books = response.data;
+        for (let book of that.books) {
+          book.picpath = "./images/" + book.isbn + ".jpg";
+        }
       })
       .catch(function(error) {
         console.log(error);

@@ -50,6 +50,10 @@
     font-size: 1em;
 }
 
+#globalHeader a.pointer {
+    cursor: pointer;
+}
+
 .search {
     width: 300px;
     height: 30px;
@@ -321,4 +325,212 @@
 .login #validtext {
     margin-left: 18px;
     font-size: 14px;
+}
+
+.manage {
+    border-left:1px solid #cccccc;
+    border-right:1px solid #cccccc;
+    margin: 0 auto;
+    width: 65%;
+    height: fit-content;
+}
+
+.manage .header {
+    margin: 20px 20px 0px 20px;
+    padding: 10px;
+    border-bottom: 2px solid #1a66b3;
+}
+
+.manage .header a {
+    font-size: 24px;
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+.bookmanager .sort {
+    margin-top: 0.8em;
+    margin-left: 2em;
+    display: flex;
+    margin-bottom: 1em;
+}
+
+.bookmanager .sort div {
+    cursor: pointer;
+    padding:    5px;
+}
+
+.bookmanager .selected_category {
+    cursor: pointer;
+    width: 120px;
+    height: 30px;
+}
+
+.bookmanager .bookelem {
+    display: flex;
+    margin-left: 2em;
+    margin-right: 2em;
+    border-bottom: 1px solid #cccccc;
+}
+
+.bookmanager .bookelem div {
+    margin: 10px 0px 10px 0px;
+}
+
+.bookmanager .bookelem .isbn {
+    width: 140px;
+}
+
+.bookmanager .bookelem .title {
+    width: 200px;
+}
+
+.bookmanager .bookelem .author {
+    width: 350px;
+}
+
+.bookmanager .bookelem .pic {
+    width: 100px;
+}
+
+.bookmanager .bookelem .category {
+    width: 100px;
+}
+
+.bookmanager .bookelem .stock {
+    width: 80px;
+}
+
+.bookmanager .bookelem .button {
+    width: 250px;
+}
+
+.bookmanager .bookelem button.modify{
+    cursor: pointer;
+    background-color: #1a66b3;
+    color: #ffffff;
+    font-size: 16px;
+    width: 100px;
+    height: 30px;
+    border: 1px solid #1a66b3;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+.bookmanager .bookelem button.modify:hover{
+    background-color: #307bc5;
+}
+
+.bookmanager .bookelem button.modify:active{
+    background-color: #629eda;
+}
+
+.bookmanager .bookelem button.delete{
+    cursor: pointer;
+    background-color: #da336b;
+    color: #ffffff;
+    font-size: 16px;
+    width: 100px;
+    height: 30px;
+    margin-left: 20px;
+    border: 1px solid #da336b;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+.bookmanager .bookelem button.delete:hover{
+    background-color: #e4487c;
+}
+
+.bookmanager .bookelem button.delete:active{
+    background-color: #f078a0;
+}
+
+.bookmanager button.create {
+    cursor: pointer;
+    position: absolute;
+    background-color: #1a66b3;
+    color: #ffffff;
+    font-size: 16px;
+    width: 100px;
+    height: 30px;
+    right: 25%;
+    border: 1px solid #1a66b3;
+    border-radius: 4px;
+}
+
+.bookmanager button.create:hover{
+    background-color: #307bc5;
+}
+
+.bookmanager button.create:active{
+    background-color: #629eda;
+}
+
+
+.bookmodifier {
+    margin: 50px auto;
+    width: 560px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+
+.bookmodifier .input-box{
+    text-align: right;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+    padding: 12px 0px;
+}
+
+.bookmodifier .input-box input{
+    width: 400px;
+    font-size: 16px;
+    height: 32px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    padding-left: 12px;
+    margin-right: 55px;
+}
+
+.bookmodifier .input-box select{
+    width: 414px;
+    font-size: 16px;
+    height: 34px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    padding-left: 5px;
+    margin-right: 55px;
+}
+
+.bookmodifier .input-box textarea{
+    width: 390px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    padding: 10px 10px 10px 10px;
+    margin-right: 55px;
+}
+
+.bookmodifier button.submit {
+    cursor: pointer;
+    background-color: #1a66b3;
+    color: #ffffff;
+    margin: 20px 0px 20px 50px;
+    position: relative;
+    font-size: 16px;
+    width: 100px;
+    height: 40px;
+    border: 1px solid #1a66b3;
+    border-radius: 4px;
+}
+
+.bookmodifier button.submit:hover{
+    background-color: #307bc5;
+}
+
+.bookmodifier button.submit:active{
+    background-color: #629eda;
 }
