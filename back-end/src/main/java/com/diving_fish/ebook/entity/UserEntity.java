@@ -26,13 +26,11 @@ public class UserEntity implements UserDetails {
     @Column
     private Boolean enabled;
 
-    @ManyToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER)
-    private List<UserEntity> users;
-
     public UserEntity() {
 
     }
-    public void set(Integer _id, String _username, String _password, String _email, Integer _role) {
+
+    public UserEntity(Integer _id, String _username, String _password, String _email, Integer _role) {
         id = _id;
         username = _username;
         password = _password;
@@ -86,10 +84,12 @@ public class UserEntity implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> auths = new ArrayList<>();
-        List<UserEntity> users = this.users;
-        for (UserEntity user : users) {
-            auths.add(new SimpleGrantedAuthority( (user.getRole() == 0) ? "ADMIN": "USER"));
+        List<GrantedAuthority> auths = new ArrayList<GrantedAuthority>();
+        if (this.getRole() == 0) {
+            auths.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+            auths.add(new SimpleGrantedAuthority("ROLE_USER"));
+        } else {
+            auths.add(new SimpleGrantedAuthority("ROLE_USER"));
         }
         return auths;
     }

@@ -1,5 +1,7 @@
 package com.diving_fish.ebook.entity;
 
+import net.sf.json.JSONObject;
+
 import javax.persistence.*;
 
 @Entity
@@ -22,21 +24,24 @@ public class BookEntity {
     @Column
     public Boolean valid;
 
-    public String to_json() {
-        String ret = "{";
-        ret += "\"isbn\": " + isbn + ", ";
-        ret += "\"title\": \"" + title + "\", ";
-        ret += "\"price\": " + price + ", ";
-        ret += "\"author\": \"" + author + "\", ";
-        ret += "\"intro\": \"" + intro + "\", ";
-        ret += "\"stock\": " + stock + ", ";
-        ret += "\"category\": " + category + ", ";
-        ret += "\"valid\": " + valid + ", ";
-        ret += "}";
-        return ret;
+    public JSONObject to_json() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("isbn", isbn);
+        jsonObject.put("title", title);
+        jsonObject.put("price", price);
+        jsonObject.put("author", author);
+        jsonObject.put("intro", intro);
+        jsonObject.put("stock", stock);
+        jsonObject.put("category", category);
+        jsonObject.put("valid", valid);
+        return jsonObject;
     }
 
-    public void set(Long _isbn, String _title, Double _price, String _author, String _intro, Integer _stock, Integer _category, Boolean _valid) {
+    public BookEntity() {
+
+    }
+
+    public BookEntity(Long _isbn, String _title, Double _price, String _author, String _intro, Integer _stock, Integer _category, Boolean _valid) {
         isbn = _isbn;
         title = _title;
         price = _price;

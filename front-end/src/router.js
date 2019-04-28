@@ -8,6 +8,8 @@ import notfound from './components/NotFound.vue'
 import register from './components/Register.vue'
 import manage from './components/Manage.vue'
 import managebook from './components/ManageBook.vue'
+import cart from './components/Cart.vue'
+import order from './components/Order.vue'
 
 Vue.use(Router)
 
@@ -37,6 +39,16 @@ export default new Router({
       path: '/book/:isbn',
       name: 'bookdetail',
       component: bookdetail
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: cart
+    },
+    {
+      path: '/order',
+      name: 'order',
+      component: order
     },
     {
       path: '/manage',

@@ -8,7 +8,7 @@
       </div>
       <div class="input-box">
         <span>密码：</span>
-        <input type="text" v-model="password">
+        <input type="password" v-model="password">
       </div>
       <div class="button-box">
         <button @click="submit">登录</button>

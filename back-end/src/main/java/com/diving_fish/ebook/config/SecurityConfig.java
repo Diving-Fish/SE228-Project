@@ -1,5 +1,7 @@
 package com.diving_fish.ebook.config;
 
+import com.diving_fish.ebook.entity.UserEntity;
+import com.diving_fish.ebook.repository.UserRepository;
 import com.diving_fish.ebook.service.CustomUserService;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,13 +43,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(customUserService()).passwordEncoder(new BCryptPasswordEncoder());
     }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
         http
                 .cors().and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/booklist", "/login").permitAll()
+                .antMatchers("/booklist", "/login", "/getbook", "/register").permitAll()
+                .antMatchers("/modifybook", "/removebook").hasAuthority("ROLE_ADMIN")
+                .antMatchers("/getcart").hasAuthority("ROLE_USER")
                 .and()
                 .formLogin()
                 .successHandler(new AuthenticationSuccessHandler() {
@@ -56,7 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         String username = authentication.getName();
                         response.setContentType("application/json;charset=utf-8");
                         List<String> authorities = new ArrayList<>();
-                        for (GrantedAuthority authority :authentication.getAuthorities()) {
+                        for (GrantedAuthority authority : authentication.getAuthorities()) {
                             authorities.add(authority.getAuthority());
                         }
                         PrintWriter out = response.getWriter();

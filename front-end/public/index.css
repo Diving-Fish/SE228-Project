@@ -166,7 +166,7 @@
 }
 
 .bookinstance .inner div.book .description {
-    width: 400px;
+    width: fit-content;
 }
 
 .bookinstance .inner div.book div.image {
@@ -214,18 +214,39 @@
     margin-top: 20px;
 }
 
+.bookinstance .inner div.book .part2 input {
+    width: 60px;
+    height: 30px;
+    margin: 0px 0px 0px 0px;
+    text-align: center;
+    padding: 3px 0px;
+    font-size: 18px;
+}
+
+.bookinstance .inner div.book .part2 button {
+    width: 40px;
+    height: 40px;
+    margin: 0px 0px 0px 0px;
+    text-align: center;
+    font-size: 24px;
+}
+
 .bookinstance .inner div.book .buy {
+    height: 30px;
+    width: fit-content;
     background: #1a66b3;
     padding: 5px 20px;
-    margin: 0px 20px 0px 0px;
+    margin: 0px 20px 0px 20px;
     font-size: 20px;
     color: #fff;
     cursor: pointer;
 }
 
 .bookinstance .inner div.book .cart {
+    height: 30px;
+    width: fit-content;
     border: 1px #1a66b3 solid;
-    padding: 5px 20px;
+    padding: 4px 20px;
     margin: 0px 20px 0px 0px;
     font-size: 20px;
     color: #1a66b3;
@@ -533,4 +554,186 @@
 
 .bookmodifier button.submit:active{
     background-color: #629eda;
+}
+
+.cart {
+    border-left:1px solid #cccccc;
+    border-right:1px solid #cccccc;
+    margin: 0 auto;
+    width: 65%;
+    height: fit-content;
+}
+
+.cart .header {
+    font-size: 28px;
+    margin: 20px 20px;
+    padding: 10px;
+    color: #0f5092;
+    border-bottom: 2px solid #1a66b3;
+}
+
+.cart .itemelem {
+    display: flex;
+    margin-left: 2em;
+    margin-right: 2em;
+    border-bottom: 1px solid #cccccc;
+}
+
+.cart .itemelem div {
+    margin: 10px 0px 10px 0px;
+}
+
+.cart .itemelem .title {
+    font-size: 24px;
+}
+
+.cart .itemelem .pic {
+    width: 160px;
+}
+
+.cart .itemelem button.delete{
+    cursor: pointer;
+    background-color: #da336b;
+    color: #ffffff;
+    font-size: 16px;
+    width: 100px;
+    height: 30px;
+    margin-left: 20px;
+    border: 1px solid #da336b;
+    border-radius: 4px;
+}
+
+.cart .itemelem button.delete:hover{
+    background-color: #e4487c;
+}
+
+.cart .itemelem button.delete:active{
+    background-color: #f078a0;
+}
+
+.cart .itemelem .operate button.amount {
+    width: 30px;
+    height: 30px;
+    margin: 0px 0px 0px 0px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.cart .itemelem .operate input {
+    width: 60px;
+    height: 20px;
+    margin: 0px 0px 0px 0px;
+    text-align: center;
+    padding: 3px 0px;
+    font-size: 18px;
+}
+
+.cart .itemelem .price {
+    right: 20%;
+    position: absolute;
+    font-size: 24px;
+    color: red;
+    margin: 20px 0px 20px 0px;
+}
+
+.cart .allprice {
+    left: 20%;
+    position: absolute;
+    font-size: 24px;
+    color: red;
+    margin: 20px 0px 20px 0px;
+}
+
+.cart button.submit {
+    cursor: pointer;
+    background-color: #1a66b3;
+    color: #ffffff;
+    margin: 16px 0px 16px 50px;
+    position: absolute;
+    right: 20%;
+    font-size: 20px;
+    width: 100px;
+    height: 40px;
+    border: 1px solid #1a66b3;
+    border-radius: 4px;
+}
+
+.cart button.submit:hover{
+    background-color: #307bc5;
+}
+
+.cart button.submit:active{
+    background-color: #629eda;
+}
+
+
+.order {
+    border-left:1px solid #cccccc;
+    border-right:1px solid #cccccc;
+    margin: 0 auto;
+    width: 65%;
+    height: fit-content;
+}
+
+.order .header {
+    font-size: 28px;
+    margin: 20px 20px;
+    padding: 10px;
+    color: #0f5092;
+    border-bottom: 2px solid #1a66b3;
+}
+
+.order .header .time_filter a {
+    margin-top: 20px;
+    font-size: 20px;
+    color: black;
+    padding: 0px 10px;
+}
+
+.order .header .time_filter input {
+    height: 30px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+.order .groupitem .header {
+    font-size: 18px;
+    margin: 20px 30px;
+    padding: 10px;
+    color: black;
+    border-bottom: 2px solid #1a66b3;
+}
+
+.order .groupitem .header a {
+    margin-right: 20px;
+}
+
+.order .orderitem {
+    display: flex;
+    margin-left: 2em;
+    margin-right: 2em;
+    padding: 10px;
+    border-bottom: 1px solid #cccccc;
+    font-size: 16px;
+}
+
+.order .orderitem .pic {
+    width: 10%;
+}
+
+.order .orderitem .title {
+    width: 35%;
+}
+
+.order .orderitem .amount {
+    width: 15%;
+}
+
+.order .orderitem .price {
+    width: 20%;
+}
+
+.order .orderitem .allprice {
+    width: 20%;
 }
