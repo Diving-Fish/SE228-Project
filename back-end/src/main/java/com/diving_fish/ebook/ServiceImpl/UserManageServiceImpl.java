@@ -42,10 +42,6 @@ public class UserManageServiceImpl implements UserManageService {
     public JSONObject getUserInfo(String username) {
         JSONObject jsonObject = new JSONObject();
         UserEntity user = userRepository.findByUsername(username);
-        if (user == null) {
-            jsonObject.put("status", "error");
-            return jsonObject;
-        }
         jsonObject.put("status", 200);
         jsonObject.put("id", user.getId());
         jsonObject.put("username", user.getUsername());

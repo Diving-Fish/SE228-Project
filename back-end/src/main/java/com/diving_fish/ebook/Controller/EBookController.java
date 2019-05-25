@@ -101,7 +101,16 @@ public class EBookController {
     @RequestMapping(value = "/userinfo", method = RequestMethod.GET)
     @ResponseBody
     public JSONObject getUserinfo(Principal principal) {
-        return userManageService.getUserInfo(principal.getName());
+        JSONObject jsonObject;
+        try {
+            jsonObject = userManageService.getUserInfo(principal.getName());
+            return jsonObject;
+        }
+        catch (NullPointerException e) {
+            jsonObject = new JSONObject();
+            jsonObject.put("status", "error");
+            return jsonObject;
+        }
     }
 
     @RequestMapping(value = "/usernamevalid", method = RequestMethod.GET)
