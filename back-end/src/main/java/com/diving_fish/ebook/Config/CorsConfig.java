@@ -1,4 +1,4 @@
-package com.diving_fish.ebook.config;
+package com.diving_fish.ebook.Config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

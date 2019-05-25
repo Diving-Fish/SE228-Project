@@ -1,6 +1,6 @@
-package com.diving_fish.ebook.repository;
+package com.diving_fish.ebook.Repository;
 
-import com.diving_fish.ebook.entity.UserEntity;
+import com.diving_fish.ebook.Entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

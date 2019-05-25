@@ -1,4 +1,4 @@
-package com.diving_fish.ebook.session;
+package com.diving_fish.ebook.Session;
 
 import java.util.*;
 

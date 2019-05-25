@@ -1,4 +1,4 @@
-package com.diving_fish.ebook.entity;
+package com.diving_fish.ebook.Entity;
 
 import net.sf.json.JSONObject;
 

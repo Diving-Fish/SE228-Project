@@ -1,15 +1,16 @@
-package com.diving_fish.ebook.service;
+package com.diving_fish.ebook.ServiceImpl;
 
-import com.diving_fish.ebook.entity.UserEntity;
-import com.diving_fish.ebook.repository.UserRepository;
+import com.diving_fish.ebook.Entity.UserEntity;
+import com.diving_fish.ebook.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-public class CustomUserService implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserEntity user = userRepository.findByUsername(username);

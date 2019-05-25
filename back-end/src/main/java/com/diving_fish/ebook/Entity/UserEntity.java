@@ -1,6 +1,5 @@
-package com.diving_fish.ebook.entity;
+package com.diving_fish.ebook.Entity;
 
-import com.sun.org.apache.bcel.internal.generic.RETURN;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

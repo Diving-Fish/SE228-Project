@@ -1,4 +1,4 @@
-package com.diving_fish.ebook.entity;
+package com.diving_fish.ebook.Entity;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;

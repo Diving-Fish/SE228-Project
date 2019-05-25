@@ -1,9 +1,6 @@
-package com.diving_fish.ebook.config;
+package com.diving_fish.ebook.Config;
 
-import com.diving_fish.ebook.entity.UserEntity;
-import com.diving_fish.ebook.repository.UserRepository;
-import com.diving_fish.ebook.service.CustomUserService;
-import net.sf.json.JSONObject;
+import com.diving_fish.ebook.ServiceImpl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +11,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
@@ -36,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     UserDetailsService customUserService() {
-        return new CustomUserService();
+        return new UserDetailsServiceImpl();
     }
 
     @Autowired

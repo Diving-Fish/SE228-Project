@@ -1,6 +1,6 @@
-package com.diving_fish.ebook.repository;
+package com.diving_fish.ebook.Repository;
 
-import com.diving_fish.ebook.entity.OrderEntity;
+import com.diving_fish.ebook.Entity.OrderEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
