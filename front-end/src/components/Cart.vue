@@ -3,7 +3,7 @@
     <div style="height: 3em"></div>
     <div class="header">购物车</div>
     <div class="itemelem" v-for="item in cart" :key="item.isbn">
-      <div class="pic"><img :src="'images/' + item.isbn + '.jpg'" style="width: 120px; height: 120px"></div>
+      <div class="pic"><img :src="item.imagelink" style="width: 120px; height: 120px"></div>
       <div>
         <div class="title">{{ item.title }}</div>
         <div style="display: flex; font-size: 18px" class="operate">

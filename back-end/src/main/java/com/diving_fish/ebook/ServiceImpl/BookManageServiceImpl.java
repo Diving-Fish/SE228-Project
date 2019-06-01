@@ -37,16 +37,22 @@ public class BookManageServiceImpl implements BookManageService {
 
     @Override
     public void modifyBook(JSONObject book) {
+        Long isbn = book.getLong("isbn");
         BookEntity bookEntity = new BookEntity(
-                Long.parseLong(book.get("isbn").toString()),
+                isbn,
                 book.get("title").toString(),
                 Double.parseDouble(book.get("price").toString()),
                 book.get("author").toString(),
                 book.get("intro").toString(),
                 Integer.parseInt(book.get("stock").toString()),
                 Integer.parseInt(book.get("category").toString()),
-                true
+                true,
+                book.getString("imagelink")
         );
+        BookEntity be = bookRepository.findByIsbn(isbn);
+        if (be != null) {
+            bookRepository.deleteByIsbn(isbn);
+        }
         bookRepository.save(bookEntity);
     }
 

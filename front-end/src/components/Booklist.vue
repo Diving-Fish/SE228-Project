@@ -29,14 +29,15 @@
     <div class="bookele" v-for="book in filter_book" :key="book.isbn">
       <div class="inner">
         <div class="book">
-          <img :src="book.picpath" style="width: 200px; height: 200px; margin-left: 20px; margin-right: 20px;">
+          <img :src="book.imagelink" style="width: 200px; height: 200px; margin-left: 20px; margin-right: 20px;">
           <div class="description">
             <router-link :to="'/book/' + book.isbn" :href="book.link" class="title">{{ book.title }}</router-link>
             <div>
               <a class="price">￥{{ book.price.toFixed(2) }}</a>
               <a class="stock">库存{{ book.stock }}本</a>
             </div>
-            <a class="author">{{ book.author }}</a>
+            <a class="author">作者：{{ book.author }}</a>
+            <a>{{ book.intro }}</a>
           </div>
         </div>
       </div>
@@ -77,9 +78,6 @@ export default {
       .get("http://localhost:8080/booklist/")
       .then(function(response) {
         that.books = response.data;
-        for (let book of that.books) {
-          book.picpath = "./images/" + book.isbn + ".jpg";
-        }
       })
       .catch(function(error) {
         console.log(error);

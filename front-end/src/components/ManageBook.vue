@@ -6,7 +6,7 @@
       <a style="color: grey">用户管理</a>
     </div>
     <div class="bookmodifier">
-        <img :src="picpath" style="width: 150px; height: 150px; margin: 30px 0px 0px 90px;">
+        <img :src="imagelink" style="width: 150px; height: 150px; margin: 30px 0px 0px 90px;">
       <div class="input-box">
         <span>ISBN：</span>
         <input type="number" v-model="isbn">
@@ -18,6 +18,10 @@
       <div class="input-box">
         <span>作者：</span>
         <input type="text" v-model="author">
+      </div>
+      <div class="input-box">
+        <span>封面：</span>
+        <input type="text" v-model="imagelink">
       </div>
       <div class="input-box">
         <span>库存：</span>
@@ -62,7 +66,7 @@ export default {
       intro: "",
       author: "",
       price: 0,
-      picpath: "",
+      imagelink: "",
       stock: 0,
     };
   },
@@ -71,7 +75,6 @@ export default {
     that.isbn = that.$route.params.isbn;
     if (that.isbn == "new") {
         that.isbn = 0;
-        that.picpath = "./images/undefined.png";
         return;
     }
     axios
@@ -83,8 +86,7 @@ export default {
         that.price = response.data.price;
         that.category = response.data.category;
         that.stock = response.data.stock;
-        that.picpath = "./images/" + that.isbn + ".jpg";
-        axios.get(that.picpath).catch(error => that.picpath = "./images/undefined.png")
+        that.imagelink = response.data.imagelink;
       }).catch(function (error) {
         window.location.href="#/404";
       });
@@ -98,7 +100,8 @@ export default {
         stock: this.stock,
         category: this.category,
         intro: this.intro,
-        price: this.price
+        price: this.price,
+        imagelink: this.imagelink
     }).then(response => {
         window.location.href = "#/manage";
         window.location.reload();

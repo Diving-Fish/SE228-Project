@@ -22,7 +22,7 @@
         <div class="allprice">总价</div>
       </div>
       <div v-for="order in group.orders" :key = "order.orderid" class="orderitem">
-        <div class="pic"><img :src="'images/' + order.book.isbn + '.jpg'" style="width: 80px; height: 80px"></div>
+        <div class="pic"><img :src="order.book.imagelink" style="width: 80px; height: 80px"></div>
         <div class="title">{{ order.book.title }}</div>
         <div class="amount"> {{ order.amount }}</div>
         <div class="price"> {{ order.book.price.toFixed(2) }}</div>
@@ -68,14 +68,13 @@ export default {
       arr.sort(function(p1, p2) {
         return p2.date - p1.date;
       });
-      console.log(arr);
       return arr;
       
     }
   },
   methods: {
     format_to_str(date) {
-      return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() + ':' + date.getMinutes();
+      return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + this.add_prefix(date.getHours()) + ':' + this.add_prefix(date.getMinutes());
     },
     format_to_local(date) {
       return date.getFullYear() + "-" + this.add_prefix(date.getMonth() + 1) + "-" + this.add_prefix(date.getDate()) + "T" + this.add_prefix(date.getHours()) + ':' + this.add_prefix(date.getMinutes());

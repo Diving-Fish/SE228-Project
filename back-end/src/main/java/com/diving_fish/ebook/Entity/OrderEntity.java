@@ -1,13 +1,15 @@
 package com.diving_fish.ebook.Entity;
 
+import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.util.Date;
 
-@Entity
-@Table(name = "orders")
+@Data
+@Document(collection = "order")
 public class OrderEntity {
     @Id
     private Integer id;
@@ -20,17 +22,15 @@ public class OrderEntity {
     @Column
     private Integer amount;
     @Column
-    @CreatedDate
-    private Timestamp create_date;
+    private Date create_date;
     @Column
-    @LastModifiedDate
-    private Timestamp modify_date;
+    private Date modify_date;
 
     public OrderEntity() {
 
     }
 
-    public OrderEntity(Integer id, Integer groupid, Integer userid, Long isbn, Integer amount, Timestamp create_date, Timestamp modify_date) {
+    public OrderEntity(Integer id, Integer groupid, Integer userid, Long isbn, Integer amount, Date create_date, Date modify_date) {
         this.id = id;
         this.groupid = groupid;
         this.userid = userid;
@@ -80,19 +80,19 @@ public class OrderEntity {
         this.amount = amount;
     }
 
-    public Timestamp getCreate_date() {
+    public Date getCreate_date() {
         return create_date;
     }
 
-    public void setCreate_date(Timestamp create_date) {
+    public void setCreate_date(Date create_date) {
         this.create_date = create_date;
     }
 
-    public Timestamp getModify_date() {
+    public Date getModify_date() {
         return modify_date;
     }
 
-    public void setModify_date(Timestamp modify_date) {
+    public void setModify_date(Date modify_date) {
         this.modify_date = modify_date;
     }
 }

@@ -1,5 +1,7 @@
 package com.diving_fish.ebook.Entity;
 
+import lombok.Data;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,8 +11,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@Entity
-@Table(name = "usercontext")
+@Data
+@Document(collection = "user")
 public class UserEntity implements UserDetails {
     @Id
     private Integer id;

@@ -5,17 +5,18 @@
       <p style="margin-bottom: 2em">所有书籍 > {{ category_list[category] }} > {{ title }}</p>
       <div class="book">
         <div class="image">
-          <img :src="picpath">
+          <img :src="imagelink">
         </div>
         <div class="description">
           <div class="part1">
             <a class="title">{{ title }}</a>
             <a class="comment">{{ (intro == '') ? "本书暂无简介！" : intro}}</a>
           </div>
-          <a class="author">{{ author }}</a>
-          <a class="price">￥{{ price.toFixed(2) }}</a>
+          <a class="author">作者：{{ author }}</a>
+          <a class="price">￥{{ (price * amount).toFixed(2) }}</a>
+          <a class="stock">库存{{ stock }}本</a>
           <div class="part2">
-            <button @click="(amount > 1) ? amount-- : amount = 1">-</button>
+            <button @click="amount--">-</button>
             <input v-model="amount">
             <button @click="amount++">+</button>
             <div class="buy" @click="buy">立即购买</div>
@@ -44,7 +45,26 @@ export default {
       price: 0,
       category: 0,
       picpath: "",
+      stock: 0,
+      old_amount: 1,
+      imagelink: ""
     };
+  },
+  watch: {
+    amount: function(val) {
+      if (val < 1) {
+        this.amount = 1;
+      } else if (val > this.stock) {
+        this.amount = this.stock;
+      } else if (isNaN(val)) {
+        this.amount = this.old_amount;
+        return;
+      } else if (this.amount.toString().indexOf(".") != -1) {
+        this.amount = this.old_amount;
+        return;
+      }
+      this.old_amount = this.amount;
+    }
   },
   created: function() {
     let that = this;
@@ -57,8 +77,8 @@ export default {
         that.author = response.data.author;
         that.price = response.data.price;
         that.category = response.data.category;
-        that.picpath = "./images/" + that.isbn + ".jpg";
-        axios.get(that.picpath).catch(error => that.picpath = "./images/undefined.png")
+        that.imagelink = response.data.imagelink;
+        that.stock = response.data.stock;
       }).catch(function (error) {
         window.location.href="#/404";
       });

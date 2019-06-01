@@ -1,11 +1,13 @@
 package com.diving_fish.ebook.Entity;
 
+import lombok.Data;
 import net.sf.json.JSONObject;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "book")
+@Document(collection = "book")
+@Data
 public class BookEntity {
     @Id
     public Long isbn;
@@ -23,6 +25,8 @@ public class BookEntity {
     public Integer category;
     @Column
     public Boolean valid;
+    @Column
+    public String imagelink;
 
     public JSONObject to_json() {
         JSONObject jsonObject = new JSONObject();
@@ -34,6 +38,7 @@ public class BookEntity {
         jsonObject.put("stock", stock);
         jsonObject.put("category", category);
         jsonObject.put("valid", valid);
+        jsonObject.put("imagelink", imagelink);
         return jsonObject;
     }
 
@@ -41,7 +46,7 @@ public class BookEntity {
 
     }
 
-    public BookEntity(Long _isbn, String _title, Double _price, String _author, String _intro, Integer _stock, Integer _category, Boolean _valid) {
+    public BookEntity(Long _isbn, String _title, Double _price, String _author, String _intro, Integer _stock, Integer _category, Boolean _valid, String _imagelink) {
         isbn = _isbn;
         title = _title;
         price = _price;
@@ -50,5 +55,6 @@ public class BookEntity {
         stock = _stock;
         category = _category;
         valid = _valid;
+        imagelink = _imagelink;
     }
 }

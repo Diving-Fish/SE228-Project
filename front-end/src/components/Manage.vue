@@ -46,7 +46,7 @@
         <div class="isbn">{{ book.isbn }}</div>
         <div class="title">{{ book.title }}</div>
         <div class="author">{{ book.author }}</div>
-        <div class="pic"><img :src="book.picpath" style="width: 80px; height: 80px"></div>
+        <div class="pic"><img :src="book.imagelink" style="width: 80px; height: 80px"></div>
         <div class="stock">{{ book.stock }}</div>
         <div class="category">{{ category_list[book.category].name }}</div>
         <div class="button">
@@ -84,9 +84,6 @@ export default {
       .get("http://localhost:8080/booklist/")
       .then(function(response) {
         that.books = response.data;
-        for (let book of that.books) {
-          book.picpath = "./images/" + book.isbn + ".jpg";
-        }
       })
       .catch(function(error) {
         console.log(error);

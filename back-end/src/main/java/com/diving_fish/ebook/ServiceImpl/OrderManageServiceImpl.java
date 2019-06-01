@@ -1,5 +1,6 @@
 package com.diving_fish.ebook.ServiceImpl;
 
+import com.diving_fish.ebook.Entity.BookEntity;
 import com.diving_fish.ebook.Entity.OrderEntity;
 import com.diving_fish.ebook.Repository.OrderRepository;
 import com.diving_fish.ebook.Service.BookManageService;
@@ -9,7 +10,7 @@ import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
+import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.LinkedHashMap;
@@ -25,14 +26,14 @@ public class OrderManageServiceImpl implements OrderManageService {
     @Autowired
     private BookManageService bookManageService;
 
-    public String stampToString(Timestamp timestamp) {
+    public String stampToString(Date date) {
         DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        return sdf.format(timestamp);
+        return sdf.format(date);
     }
 
     @Override
     public void submitOrder(Integer id, JSONObject form) {
-        Timestamp ts = new Timestamp(System.currentTimeMillis());
+        Date date = new Date(System.currentTimeMillis());
         Random r = new Random();
         int r_id, group_id, order_id;
         while (true) {
@@ -56,7 +57,10 @@ public class OrderManageServiceImpl implements OrderManageService {
                     break;
                 }
             }
-            OrderEntity o = new OrderEntity(order_id, group_id, id, isbn, amount, ts, ts);
+            OrderEntity o = new OrderEntity(order_id, group_id, id, isbn, amount, date, date);
+            JSONObject book = bookManageService.getBook(isbn);
+            book.put("stock", book.getInt("stock") - amount);
+            bookManageService.modifyBook(book);
             orderRepository.save(o);
         }
     }
