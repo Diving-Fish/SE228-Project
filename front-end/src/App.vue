@@ -17,6 +17,7 @@
           <a v-show="this.userinfo.status == 200">你好，{{ userinfo.username }}</a>
           <router-link to="/cart" v-show="this.userinfo.status == 200">购物车</router-link>
           <router-link to="/order" v-show="this.userinfo.status == 200">我的订单</router-link>
+          <router-link to="/orderstatistic" v-show="this.userinfo.status == 200 && this.userinfo.role == 0">订单统计</router-link>
           <router-link to="/manage" v-show="this.userinfo.status == 200 && this.userinfo.role == 0">管理系统</router-link>
           <a class="pointer" @click="logout" v-show="this.userinfo.status == 200">登出</a>
         </div>
@@ -30,6 +31,13 @@
 <script>
 import axios from 'axios';
 export default {
+  watch: {
+    '$route' (to, from) {
+      if (to.path == "/manage" || to.path == "/managebook" || to.path == "/orderstatistic") {
+        if (this.userinfo.role != 0) window.location.href = "#/404";
+      }
+    }
+  },
   data () {
     return {
       userinfo: {},
@@ -45,6 +53,7 @@ export default {
     logout() {
       axios.post("http://localhost:8080/logout");
       alert("登出成功！");
+      window.location.href = "#/";
       window.location.reload();
     }
   }

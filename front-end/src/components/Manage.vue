@@ -2,9 +2,32 @@
   <div class="manage">
     <div style="height: 3em"></div>
     <div class="header">
-      <a :style="(selecting == 'book') ? 'color: #1a66b3' : 'color: grey'">书籍管理</a>
-      <a :style="(selecting == 'user') ? 'color: #1a66b3' : 'color: grey'">用户管理</a>
+      <a @click="selecting = 'book'" :style="(selecting == 'book') ? 'color: #1a66b3' : 'color: grey'">书籍管理</a>
+      <a @click="selecting = 'user'" :style="(selecting == 'user') ? 'color: #1a66b3' : 'color: grey'">用户管理</a>
     </div>
+
+
+    <div v-show="selecting == 'user'" class="usermanager">
+      <div class="userelem">
+        <div class="id">id</div>
+        <div class="username">用户名</div>
+        <div class="role">身份</div>
+        <div class="enabled">状态</div>
+        <div class="button">操作</div>
+      </div>
+      <div class="userelem" v-for="user in users" :key="user.id">
+        <div class="id">{{ user.id }}</div>
+        <div class="username">{{ user.username }}</div>
+        <div class="role">{{ user.role == 1 ? '用户' : '管理员' }}</div>
+        <div class="enabled">{{ user.enabled ? '启用' : '禁用' }}</div>
+        <div class="button">
+          <button @click="user.role == 1 ? enable(user.username) : ''" :class="user.role == 1 ? 'enable' : 'grey'" v-show="!user.enabled">启用此用户</button>
+          <button @click="user.role == 1 ? disable(user.username) : ''" :class="user.role == 1 ? 'disable' : 'grey'" v-show="user.enabled">禁用此用户</button>
+        </div>
+      </div>
+    </div>
+
+
     <div v-show="selecting == 'book'" class="bookmanager">
       <div style="margin-left: 2em; padding: 5px; margin: 20px">
         分类：
@@ -75,7 +98,8 @@ export default {
         { name: "教材", value: 1 },
         { name: "其他书籍", value: 2 }
       ],
-      books: []
+      books: [],
+      users: []
     };
   },
   created: function() {
@@ -84,6 +108,14 @@ export default {
       .get("http://localhost:8080/booklist/")
       .then(function(response) {
         that.books = response.data;
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+    axios
+      .get("http://localhost:8080/userlist/")
+      .then(function(response) {
+        that.users = response.data.sort((p1, p2) => { return (p1.id - p2.id)});
       })
       .catch(function(error) {
         console.log(error);
@@ -143,6 +175,36 @@ export default {
       } else {
         this.sortType = sortType;
       }
+    },
+    enable(username) {
+      let that = this;
+      axios.post("http://localhost:8080/enableuser?username=" + username).then(
+        response => {
+          axios
+            .get("http://localhost:8080/userlist/")
+            .then(function(response) {
+              that.users = response.data.sort((p1, p2) => { return (p1.id - p2.id)});
+            })
+            .catch(function(error) {
+              console.log(error);
+            });
+        }
+      )
+    },
+    disable(username) {
+      let that = this;
+      axios.post("http://localhost:8080/disableuser?username=" + username).then(
+        response => {
+          axios
+            .get("http://localhost:8080/userlist/")
+            .then(function(response) {
+              that.users = response.data.sort((p1, p2) => { return (p1.id - p2.id)});
+            })
+            .catch(function(error) {
+              console.log(error);
+            });
+        }
+      )
     }
   }
 };

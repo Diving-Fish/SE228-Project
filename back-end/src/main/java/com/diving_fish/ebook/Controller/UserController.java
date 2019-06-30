@@ -1,6 +1,7 @@
 package com.diving_fish.ebook.Controller;
 
 import com.diving_fish.ebook.Service.UserManageService;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -45,5 +46,29 @@ public class UserController {
         response.put("valid", userManageService.isUsernameValid(username));
         response.put("status", 200);
         return response;
+    }
+
+    @PostMapping(value = "/disableuser")
+    @ResponseBody
+    public JSONObject disableuser(@RequestParam("username") String username) {
+        JSONObject response = new JSONObject();
+        response.put("status", 200);
+        userManageService.disableCustomer(username);
+        return response;
+    }
+
+    @PostMapping(value = "/enableuser")
+    @ResponseBody
+    public JSONObject enableuser(@RequestParam("username") String username) {
+        JSONObject response = new JSONObject();
+        response.put("status", 200);
+        userManageService.enableCustomer(username);
+        return response;
+    }
+
+    @GetMapping(value = "/userlist")
+    @ResponseBody
+    public JSONArray userlist() {
+        return userManageService.getUserList();
     }
 }

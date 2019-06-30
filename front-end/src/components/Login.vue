@@ -47,9 +47,11 @@ export default {
           alert("登录成功！");
           window.location.href = "#/";
           window.location.reload();
+        } else if (response.data.msg == 'User is disabled') {
+          alert("您的账号已经被禁用！");
         } else {
           alert("用户名或密码错误！");
-        }
+        } 
       });
     }
   }

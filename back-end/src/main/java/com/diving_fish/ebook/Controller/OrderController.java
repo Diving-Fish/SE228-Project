@@ -36,4 +36,10 @@ public class OrderController {
     public JSONObject getorder(Principal principal) {
         return orderManageService.getOrders(userManageService.getUserInfo(principal.getName()).getInt("id"));
     }
+
+    @GetMapping(value = "/getallorders")
+    @ResponseBody
+    public JSONObject getallorders() {
+        return orderManageService.getAllOrders();
+    }
 }

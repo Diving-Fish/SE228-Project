@@ -488,6 +488,87 @@
 }
 
 
+.usermanager .userelem {
+    display: flex;
+    margin-left: 2em;
+    margin-right: 2em;
+    border-bottom: 1px solid #cccccc;
+}
+
+.usermanager .userelem div {
+    margin: 10px 0px 10px 0px;
+}
+
+.usermanager .userelem .id {
+    width: 200px;
+}
+
+.usermanager .userelem .username {
+    width: 200px;
+}
+
+.usermanager .userelem .role {
+    width: 200px;
+}
+
+.usermanager .userelem .enabled {
+    width: 200px;
+}
+
+.usermanager .userelem .button {
+    width: 250px;
+}
+
+.usermanager .userelem button.grey{
+    cursor: pointer;
+    background-color: #858585;
+    color: #ffffff;
+    font-size: 16px;
+    width: 100px;
+    height: 30px;
+    border: 1px solid #858585;
+    border-radius: 4px;
+}
+
+.usermanager .userelem button.enable{
+    cursor: pointer;
+    background-color: #1a66b3;
+    color: #ffffff;
+    font-size: 16px;
+    width: 100px;
+    height: 30px;
+    border: 1px solid #1a66b3;
+    border-radius: 4px;
+}
+
+.usermanager .userelem button.enable:hover{
+    background-color: #307bc5;
+}
+
+.usermanager .userelem button.enable:active{
+    background-color: #629eda;
+}
+
+.usermanager .userelem button.disable{
+    cursor: pointer;
+    background-color: #da336b;
+    color: #ffffff;
+    font-size: 16px;
+    width: 100px;
+    height: 30px;
+    border: 1px solid #da336b;
+    border-radius: 4px;
+}
+
+.usermanager .userelem button.disable:hover{
+    background-color: #e4487c;
+}
+
+.usermanager .userelem button.disable:active{
+    background-color: #f078a0;
+}
+
+
 .bookmodifier {
     margin: 50px auto;
     width: 560px;
@@ -718,6 +799,18 @@
     font-size: 16px;
 }
 
+.order .orderitem2 {
+    display: flex;
+    margin-left: 2em;
+    margin-right: 2em;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.order .orderitem2 .allprice {
+    margin-left: 80%
+}
+
 .order .orderitem .pic {
     width: 10%;
 }
@@ -736,4 +829,12 @@
 
 .order .orderitem .allprice {
     width: 20%;
+}
+
+.order .allcost {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: red;
+    margin-left: 75%;
 }

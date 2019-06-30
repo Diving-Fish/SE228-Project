@@ -3,8 +3,10 @@ package com.diving_fish.ebook.ServiceImpl;
 import com.diving_fish.ebook.Entity.BookEntity;
 import com.diving_fish.ebook.Entity.OrderEntity;
 import com.diving_fish.ebook.Repository.OrderRepository;
+import com.diving_fish.ebook.Repository.UserRepository;
 import com.diving_fish.ebook.Service.BookManageService;
 import com.diving_fish.ebook.Service.OrderManageService;
+import com.diving_fish.ebook.Service.UserManageService;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,9 @@ public class OrderManageServiceImpl implements OrderManageService {
 
     @Autowired
     private BookManageService bookManageService;
+
+    @Autowired
+    private UserRepository userRepository;
 
     public String stampToString(Date date) {
         DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -78,6 +83,41 @@ public class OrderManageServiceImpl implements OrderManageService {
                 groupObject.put("date", stampToString(order.getCreate_date()));
                 JSONArray orderArray = new JSONArray();
                 groupObject.put("orders", orderArray);
+                groupMap.put(groupid, groupObject);
+            }
+            JSONObject groupObject = groupMap.get(groupid);
+            JSONArray orderArray = groupObject.getJSONArray("orders");
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("orderid", order.getId());
+            jsonObject.put("amount", order.getAmount());
+            jsonObject.put("book", bookManageService.getBook(order.getIsbn()));
+            orderArray.add(jsonObject);
+            groupObject.put("orders", orderArray);
+            groupMap.put(groupid, groupObject);
+        }
+        JSONArray all = new JSONArray();
+        for (Integer groupid : groupMap.keySet()) {
+            all.add(groupMap.get(groupid));
+        }
+        response.put("status", 200);
+        response.put("groups", all);
+        return response;
+    }
+
+    @Override
+    public JSONObject getAllOrders() {
+        JSONObject response = new JSONObject();
+        List<OrderEntity> orderEntityList = orderRepository.findAll();
+        Map<Integer, JSONObject> groupMap = new LinkedHashMap<>();
+        for (OrderEntity order: orderEntityList) {
+            int groupid = order.getGroupId();
+            if (groupMap.get(groupid) == null) {
+                JSONObject groupObject = new JSONObject();
+                groupObject.put("groupid", groupid);
+                groupObject.put("date", stampToString(order.getCreate_date()));
+                JSONArray orderArray = new JSONArray();
+                groupObject.put("orders", orderArray);
+                groupObject.put("user", userRepository.findById(order.getUserid()).getUsername());
                 groupMap.put(groupid, groupObject);
             }
             JSONObject groupObject = groupMap.get(groupid);

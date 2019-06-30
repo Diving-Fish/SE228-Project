@@ -3,11 +3,13 @@ package com.diving_fish.ebook.ServiceImpl;
 import com.diving_fish.ebook.Entity.UserEntity;
 import com.diving_fish.ebook.Repository.UserRepository;
 import com.diving_fish.ebook.Service.UserManageService;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Random;
 
 @Service
@@ -38,6 +40,25 @@ public class UserManageServiceImpl implements UserManageService {
         createUser(username, password, email, 1);
     }
 
+
+    @Override
+    public void disableCustomer(String username) {
+        UserEntity ue = userRepository.findByUsername(username);
+        if (ue == null) return;
+        ue.setEnabled(false);
+        userRepository.deleteByUsername(username);
+        userRepository.save(ue);
+    }
+
+    @Override
+    public void enableCustomer(String username) {
+        UserEntity ue = userRepository.findByUsername(username);
+        if (ue == null) return;
+        ue.setEnabled(true);
+        userRepository.deleteByUsername(username);
+        userRepository.save(ue);
+    }
+
     @Override
     public JSONObject getUserInfo(String username) {
         JSONObject jsonObject = new JSONObject();
@@ -48,6 +69,21 @@ public class UserManageServiceImpl implements UserManageService {
         jsonObject.put("role", user.getRole());
         jsonObject.put("enabled", user.isEnabled());
         return jsonObject;
+    }
+
+    @Override
+    public JSONArray getUserList() {
+        List<UserEntity> userEntityList = userRepository.findAll();
+        JSONArray jsonArray = new JSONArray();
+        for (UserEntity user : userEntityList) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("id", user.getId());
+            jsonObject.put("username", user.getUsername());
+            jsonObject.put("role", user.getRole());
+            jsonObject.put("enabled", user.isEnabled());
+            jsonArray.add(jsonObject);
+        }
+        return jsonArray;
     }
 
     @Override

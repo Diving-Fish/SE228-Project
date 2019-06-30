@@ -10,6 +10,7 @@ import manage from './components/Manage.vue'
 import managebook from './components/ManageBook.vue'
 import cart from './components/Cart.vue'
 import order from './components/Order.vue'
+import orderstatistic from './components/OrderStatistic.vue'
 
 Vue.use(Router)
 
@@ -49,6 +50,11 @@ export default new Router({
       path: '/order',
       name: 'order',
       component: order
+    },
+    {
+      path: '/orderstatistic',
+      name: 'orderstatistic',
+      component: orderstatistic
     },
     {
       path: '/manage',

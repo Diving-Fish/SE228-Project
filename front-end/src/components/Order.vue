@@ -1,7 +1,8 @@
 <template>
   <div class="order">
     <div style="height: 3em"></div>
-    <div class="header">我的订单
+    <div class="header">
+      我的订单
       <div class="time_filter">
         <a>时间范围：</a>
         <input type="datetime-local" v-model="start_time">
@@ -28,7 +29,11 @@
         <div class="price"> {{ order.book.price.toFixed(2) }}</div>
         <div class="allprice"> {{ (order.amount * order.book.price).toFixed(2) }}</div>
       </div>
+      <div class="orderitem2">
+        <div class="allprice">{{ sum(group) }}</div>
+      </div>
     </div>
+    <div class="allcost">总消费：{{ sum2(filter_groups) }}</div>
   </div>
 </template>
 
@@ -81,6 +86,22 @@ export default {
     },
     add_prefix(num) {
       return (num > 10) ? "" + num : "0" + num;
+    },
+    sum(group) {
+      var r = 0;
+      for (let order of group.orders) {
+        r += (order.amount * order.book.price)
+      }
+      return r.toFixed(2);
+    },
+    sum2(groups) {
+      var r = 0;
+      for (let group of groups) {
+        for (let order of group.orders) {
+          r += (order.amount * order.book.price)
+        }
+      }
+      return r.toFixed(2);
     }
   }
 }
